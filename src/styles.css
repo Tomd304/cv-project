@@ -41,7 +41,7 @@
     width: 500px;
 }
 
-.cv-section {
+.cv-details-section {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -55,6 +55,22 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.cv-education-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 30px 50px;
+    border-left: 1px #333 solid;
+    border-right: 1px #333 solid;
+    width: 900px;
+}
+
+.cv-education {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
 }
 
 input {

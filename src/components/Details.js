@@ -77,11 +77,12 @@ class Details extends Component {
       );
     } else {
       return (
-        <div className="component-form">
-          <h1>{this.state.firstName}</h1>
-          <h1>{this.state.lastName}</h1>
-          <h1>{this.state.email}</h1>
-          <h1>{this.state.phoneNumber}</h1>
+        <div className="cv-section">
+          <div className="cv-details">
+            <h2>{this.state.firstName + this.state.lastName}</h2>
+            <h2>{this.state.email}</h2>
+            <h2>{this.state.phoneNumber}</h2>
+          </div>
         </div>
       );
     }

@@ -43,34 +43,24 @@
 
 .cv-details-section {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
     padding: 30px 50px;
-    border-left: 1px #333 solid;
-    border-right: 1px #333 solid;
+    background-color: #333;
+    color: white;
     width: 900px;
 }
 
-.cv-details {
+.cv-section {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-.cv-education-section {
-    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     padding: 30px 50px;
-    border-left: 1px #333 solid;
-    border-right: 1px #333 solid;
+    background-color: #333;
+    color: white;
     width: 900px;
-}
-
-.cv-education {
-    display: flex;
-    flex-direction: column;
-    align-self: flex-start;
 }
 
 input {

@@ -12,12 +12,19 @@ class Details extends Component {
       phoneNumber: "",
     };
     this.submitClick = this.submitClick.bind(this);
+    this.editClick = this.editClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   submitClick() {
     this.setState({
       editMode: false,
+    });
+  }
+
+  editClick() {
+    this.setState({
+      editMode: true,
     });
   }
 
@@ -77,12 +84,18 @@ class Details extends Component {
       );
     } else {
       return (
-        <div className="cv-section">
-          <div className="cv-details">
-            <h2>{this.state.firstName + this.state.lastName}</h2>
-            <h2>{this.state.email}</h2>
-            <h2>{this.state.phoneNumber}</h2>
-          </div>
+        <div className="cv-details-section">
+          <button
+            className="overlay-btn"
+            onClick={this.editClick}
+            style={{ alignSelf: "flex-start" }}
+          >
+            Edit
+          </button>
+
+          <h2>{this.state.firstName + " " + this.state.lastName}</h2>
+          <h2>{this.state.email}</h2>
+          <h2>{this.state.phoneNumber}</h2>
         </div>
       );
     }

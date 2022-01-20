@@ -1,12 +1,12 @@
 import { Component } from "react";
 
-class EducationItem extends Component {
+class ExperienceItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       editMode: true,
-      schoolName: "",
-      studyTitle: "",
+      companyName: "",
+      positionTitle: "",
       startDate: "",
       endDate: "",
     };
@@ -38,28 +38,28 @@ class EducationItem extends Component {
       return (
         <div className="component-form" style={{ margin: "auto" }}>
           <div className="row">
-            <h2 className="form-header">Education</h2>
+            <h2 className="form-header">Experience</h2>
             <button type="button" onClick={this.props.addClick}>
               Add
             </button>
           </div>
           <form className="input-form">
             <div className="label-group">
-              <label>School Name</label>
+              <label>Company Name</label>
               <input
-                name="schoolName"
-                value={this.state.schoolName}
+                name="companyName"
+                value={this.state.companyName}
                 onChange={this.handleChange}
-                placeholder="School Name"
+                placeholder="Company Name"
               />
             </div>
             <div className="label-group">
-              <label>Title of Study</label>
+              <label>Title of Position"</label>
               <input
-                name="studyTitle"
-                value={this.state.studyTitle}
+                name="positionTitle"
+                value={this.state.positionTitle}
                 onChange={this.handleChange}
-                placeholder="Title of Study"
+                placeholder="Account Manager"
               />
             </div>
 
@@ -113,9 +113,9 @@ class EducationItem extends Component {
           >
             Edit
           </button>
-          {this.props.identifier == 0 && <h1>Education</h1>}
-          <h2>{this.state.schoolName}</h2>
-          <h2>{this.state.studyTitle}</h2>
+          {this.props.identifier == 0 && <h1>Experience</h1>}
+          <h2>{this.state.companyName}</h2>
+          <h2>{this.state.positionTitle}</h2>
           <h2>
             {this.state.startDate}-{this.state.endDate}
           </h2>
@@ -125,4 +125,4 @@ class EducationItem extends Component {
   }
 }
 
-export { EducationItem };
+export { ExperienceItem };

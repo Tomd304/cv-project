@@ -5,10 +5,10 @@ class ExperienceItem extends Component {
     super(props);
     this.state = {
       editMode: true,
-      companyName: "",
-      positionTitle: "",
-      startDate: "",
-      endDate: "",
+      companyName: "Big Company Incorporated",
+      positionTitle: "Account Manager",
+      startDate: "2021-06-01",
+      endDate: "2022-01-15",
     };
     this.submitClick = this.submitClick.bind(this);
     this.editClick = this.editClick.bind(this);
@@ -113,11 +113,12 @@ class ExperienceItem extends Component {
           >
             Edit
           </button>
-          {this.props.identifier == 0 && <h1>Experience</h1>}
-          <h2>{this.state.companyName}</h2>
-          <h2>{this.state.positionTitle}</h2>
-          <h2>
-            {this.state.startDate}-{this.state.endDate}
+          {this.props.identifier == 0 && (
+            <h1 style={{ fontSize: 36, paddingTop: 30 }}>Experience</h1>
+          )}
+          <h2 style={{ marginTop: 8 }}>
+            {this.state.companyName} - {this.state.positionTitle} (
+            {this.state.startDate.slice(0, 4)}-{this.state.endDate.slice(0, 4)})
           </h2>
         </div>
       );

@@ -5,10 +5,10 @@ class EducationItem extends Component {
     super(props);
     this.state = {
       editMode: true,
-      schoolName: "",
-      studyTitle: "",
-      startDate: "",
-      endDate: "",
+      schoolName: "Didsburry High",
+      studyTitle: "BEng Aquamarine Science",
+      startDate: "2018-06-15",
+      endDate: "2021-06-15",
     };
     this.submitClick = this.submitClick.bind(this);
     this.editClick = this.editClick.bind(this);
@@ -113,11 +113,13 @@ class EducationItem extends Component {
           >
             Edit
           </button>
-          {this.props.identifier == 0 && <h1>Education</h1>}
-          <h2>{this.state.schoolName}</h2>
-          <h2>{this.state.studyTitle}</h2>
-          <h2>
-            {this.state.startDate}-{this.state.endDate}
+          {this.props.identifier == 0 && (
+            <h1 style={{ fontSize: 36, paddingTop: 30 }}>Education</h1>
+          )}
+          <h2 style={{ marginTop: 8 }}>
+            {this.state.schoolName} - {this.state.studyTitle} (
+            {this.state.startDate.slice(0, 4)} -{" "}
+            {this.state.endDate.slice(0, 4)})
           </h2>
         </div>
       );

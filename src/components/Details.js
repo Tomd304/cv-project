@@ -93,7 +93,7 @@ class Details extends Component {
             Edit
           </button>
 
-          <h2 style={{ fontSize: 36 }}>
+          <h2 style={{ fontSize: 48 }}>
             {this.state.firstName + " " + this.state.lastName}
           </h2>
           <h2 style={{ fontSize: 16 }}>email: {this.state.email}</h2>

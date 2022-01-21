@@ -6,10 +6,10 @@ class Details extends Component {
 
     this.state = {
       editMode: true,
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
+      firstName: "John",
+      lastName: "Doe",
+      email: "jonnyD@gmail.com",
+      phoneNumber: "+44 7854689523",
     };
     this.submitClick = this.submitClick.bind(this);
     this.editClick = this.editClick.bind(this);
@@ -93,9 +93,13 @@ class Details extends Component {
             Edit
           </button>
 
-          <h2>{this.state.firstName + " " + this.state.lastName}</h2>
-          <h2>{this.state.email}</h2>
-          <h2>{this.state.phoneNumber}</h2>
+          <h2 style={{ fontSize: 36 }}>
+            {this.state.firstName + " " + this.state.lastName}
+          </h2>
+          <h2 style={{ fontSize: 16 }}>email: {this.state.email}</h2>
+          <h2 style={{ fontSize: 16 }}>
+            contact number: {this.state.phoneNumber}
+          </h2>
         </div>
       );
     }

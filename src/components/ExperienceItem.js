@@ -9,6 +9,8 @@ class ExperienceItem extends Component {
       positionTitle: "Account Manager",
       startDate: "2021-06-01",
       endDate: "2022-01-15",
+      jobDescription:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     };
     this.submitClick = this.submitClick.bind(this);
     this.editClick = this.editClick.bind(this);
@@ -81,6 +83,16 @@ class ExperienceItem extends Component {
                 type="date"
               />
             </div>
+            <div className="label-group">
+              <label>Job Description</label>
+              <textarea
+                name="jobDescription"
+                value={this.state.jobDescription}
+                style={{ height: 140, fontSize: 18 }}
+                onChange={this.handleChange}
+                placeholder="Description of Job responsibilities / tasks"
+              />
+            </div>
             {this.props.identifier != 0 && (
               <div className="row">
                 <button
@@ -120,6 +132,7 @@ class ExperienceItem extends Component {
             {this.state.companyName} - {this.state.positionTitle} (
             {this.state.startDate.slice(0, 4)}-{this.state.endDate.slice(0, 4)})
           </h2>
+          <p>{this.state.jobDescription}</p>
         </div>
       );
     }

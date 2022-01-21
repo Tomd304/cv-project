@@ -12,6 +12,7 @@ class App extends Component {
         <Details />
         <Education />
         <Experience />
+        <div className="foot" />
       </div>
     );
   }

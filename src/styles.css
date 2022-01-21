@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
 
 }
 
@@ -52,6 +53,7 @@
     background-color: #666;
     color: white;
     width: 900px;
+    margin-top: 60px;
 
 }
 
@@ -68,10 +70,11 @@
 
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+.foot {
+    height: 100%;
+    background-color: #666;
+    width: 900px;
+    margin-bottom: 60px;
 }
 
 h1, h2 {

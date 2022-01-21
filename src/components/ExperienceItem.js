@@ -132,7 +132,9 @@ class ExperienceItem extends Component {
             {this.state.companyName} - {this.state.positionTitle} (
             {this.state.startDate.slice(0, 4)}-{this.state.endDate.slice(0, 4)})
           </h2>
-          <p>{this.state.jobDescription}</p>
+          <p style={{ textAlign: "justify", paddingRight: 40 }}>
+            {this.state.jobDescription}
+          </p>
         </div>
       );
     }

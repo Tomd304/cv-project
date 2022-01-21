@@ -47,7 +47,7 @@
     justify-content: flex-start;
     align-items: flex-end;
     padding: 30px 50px;
-    background-color: #333;
+    background-color: #666;
     color: white;
     width: 900px;
 }
@@ -58,9 +58,22 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding: 30px 50px;
-    background-color: #333;
+    background-color: #666;
     color: white;
     width: 900px;
+}
+
+.overlay-btn {
+    display: none;
+    position: absolute;
+}
+
+.cv-details-section:hover .overlay-btn {
+    display: block;
+}
+
+.cv-section:hover .overlay-btn {
+    display: block;
 }
 
 input {

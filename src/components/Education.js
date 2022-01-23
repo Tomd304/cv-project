@@ -1,5 +1,37 @@
-import { Component } from "react";
 import { EducationItem } from "./EducationItem";
+import { useState } from "react";
+
+const Education = () => {
+  const [counter, setCounter] = useState(0);
+  const [ids, setIds] = useState([0]);
+  const createItem = (identifier) => {
+    return (
+      <EducationItem
+        addClick={addClick}
+        removeSelf={removeSelf}
+        id={identifier}
+        key={"item" + identifier}
+      />
+    );
+  };
+
+  const addClick = () => {
+    setIds((oldIds) => [...oldIds, counter + 1]);
+    setCounter(counter + 1);
+  };
+  const removeSelf = (event) => {
+    console.log(event.target.dataset.identifier);
+    setIds((oldIds) => oldIds.filter((id) => id != event.target.dataset.id));
+  };
+  console.log(ids);
+  return ids.map((id) => createItem(id));
+};
+
+export { Education };
+
+/* SAME COMPONENT BUT USING CLASS INSTEAD OF HOOKS / FUNCTIONS
+
+import { Component } from "react";
 
 class Education extends Component {
   constructor(props) {
@@ -57,5 +89,4 @@ class Education extends Component {
     return <div>{this.state.edItems.map((x) => x.component)}</div>;
   }
 }
-
-export { Education };
+*/

@@ -1,61 +1,27 @@
-import { Component } from "react";
+import { useState } from "react";
 import { ExperienceItem } from "./ExperienceItem";
 
-class Experience extends Component {
-  constructor(props) {
-    super(props);
-
-    this.addClick = this.addClick.bind(this);
-    this.removeSelf = this.removeSelf.bind(this);
-
-    this.state = {
-      counter: 0,
-      expItems: [
-        {
-          identifier: 0,
-          component: (
-            <ExperienceItem
-              key="item0"
-              addClick={this.addClick}
-              removeSelf={this.removeSelf}
-              identifier={0}
-            />
-          ),
-        },
-      ],
-    };
-  }
-
-  addClick() {
-    this.state.counter++;
-    this.setState((state) => ({
-      expItems: [
-        ...state.expItems,
-        {
-          identifier: state.counter,
-          component: (
-            <ExperienceItem
-              key={"index" + state.counter}
-              addClick={this.addClick}
-              removeSelf={this.removeSelf}
-              identifier={state.counter}
-            />
-          ),
-        },
-      ],
-    }));
-  }
-
-  removeSelf(event) {
-    const identifier = event.target.dataset.identifier;
-    this.setState((state) => ({
-      expItems: state.expItems.filter((item) => item.identifier != identifier),
-    }));
-  }
-
-  render() {
-    return <div>{this.state.expItems.map((x) => x.component)}</div>;
-  }
-}
+const Experience = () => {
+  const [counter, setCounter] = useState(0);
+  const [ids, setIds] = useState([0]);
+  const addClick = () => {
+    setIds((oldIds) => [...oldIds, counter + 1]);
+    setCounter(counter + 1);
+  };
+  const removeSelf = (event) => {
+    setIds((oldIds) => oldIds.filter((id) => id != event.target.dataset.id));
+  };
+  const createExperienceItem = (id) => {
+    return (
+      <ExperienceItem
+        id={id}
+        key={"item" + id}
+        addClick={addClick}
+        removeSelf={removeSelf}
+      />
+    );
+  };
+  return ids.map((id) => createExperienceItem(id));
+};
 
 export { Experience };

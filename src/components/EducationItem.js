@@ -1,130 +1,115 @@
-import { Component } from "react";
+import { useState } from "react";
 
-class EducationItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editMode: true,
-      schoolName: "Didsburry High",
-      studyTitle: "BEng Aquamarine Science",
-      startDate: "2018-06-15",
-      endDate: "2021-06-15",
-    };
-    this.submitClick = this.submitClick.bind(this);
-    this.editClick = this.editClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+const EducationItem = (props) => {
+  const [details, setDetails] = useState({
+    editMode: true,
+    schoolName: "Didsburry High",
+    studyTitle: "BEng Aquamarine Science",
+    startDate: "2018-06-15",
+    endDate: "2021-06-15",
+  });
 
-  submitClick() {
-    this.setState({
-      editMode: false,
-    });
-  }
+  const submitClick = () => {
+    setDetails({ ...details, editMode: false });
+  };
 
-  editClick() {
-    this.setState({
-      editMode: true,
-    });
-  }
+  const editClick = () => {
+    setDetails({ ...details, editMode: true });
+  };
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
+  const handleChange = (event) => {
+    setDetails({ ...details, [event.target.name]: event.target.value });
+  };
 
-  render() {
-    if (this.state.editMode) {
-      return (
-        <div className="component-form" style={{ margin: "auto" }}>
-          <div className="row">
-            <h2 className="form-header">Education</h2>
-            <button type="button" onClick={this.props.addClick}>
-              Add
-            </button>
+  if (details.editMode) {
+    return (
+      <div className="component-form" style={{ margin: "auto" }}>
+        <div className="row">
+          <h2 className="form-header">Education</h2>
+          <button type="button" onClick={props.addClick}>
+            Add
+          </button>
+        </div>
+        <form className="input-form">
+          <div className="label-group">
+            <label>School Name</label>
+            <input
+              name="schoolName"
+              value={details.schoolName}
+              onChange={handleChange}
+              placeholder="School Name"
+            />
           </div>
-          <form className="input-form">
-            <div className="label-group">
-              <label>School Name</label>
-              <input
-                name="schoolName"
-                value={this.state.schoolName}
-                onChange={this.handleChange}
-                placeholder="School Name"
-              />
-            </div>
-            <div className="label-group">
-              <label>Title of Study</label>
-              <input
-                name="studyTitle"
-                value={this.state.studyTitle}
-                onChange={this.handleChange}
-                placeholder="Title of Study"
-              />
-            </div>
+          <div className="label-group">
+            <label>Title of Study</label>
+            <input
+              name="studyTitle"
+              value={details.studyTitle}
+              onChange={handleChange}
+              placeholder="Title of Study"
+            />
+          </div>
 
-            <div className="label-group">
-              <label>Start Date</label>
-              <input
-                name="startDate"
-                value={this.state.startDate}
-                onChange={this.handleChange}
-                type="date"
-              />
-            </div>
-            <div className="label-group">
-              <label>End Date</label>
-              <input
-                name="endDate"
-                value={this.state.endDate}
-                onChange={this.handleChange}
-                type="date"
-              />
-            </div>
-            {this.props.identifier != 0 && (
-              <div className="row">
-                <button
-                  type="button"
-                  onClick={this.props.removeSelf}
-                  data-identifier={this.props.identifier}
-                >
-                  Remove
-                </button>
-                <button type="button" onClick={this.submitClick}>
-                  Submit
-                </button>
-              </div>
-            )}
-            {this.props.identifier == 0 && (
-              <button type="button" onClick={this.submitClick}>
+          <div className="label-group">
+            <label>Start Date</label>
+            <input
+              name="startDate"
+              value={details.startDate}
+              onChange={handleChange}
+              type="date"
+            />
+          </div>
+          <div className="label-group">
+            <label>End Date</label>
+            <input
+              name="endDate"
+              value={details.endDate}
+              onChange={handleChange}
+              type="date"
+            />
+          </div>
+          {props.id != 0 && (
+            <div className="row">
+              <button
+                type="button"
+                onClick={props.removeSelf}
+                data-id={props.id}
+              >
+                Remove
+              </button>
+              <button type="button" onClick={submitClick}>
                 Submit
               </button>
-            )}
-          </form>
-        </div>
-      );
-    } else {
-      return (
-        <div className="cv-section">
-          <button
-            className="overlay-btn"
-            onClick={this.editClick}
-            style={{ alignSelf: "flex-end" }}
-          >
-            Edit
-          </button>
-          {this.props.identifier == 0 && (
-            <h1 style={{ fontSize: 36, paddingTop: 30 }}>Education</h1>
+            </div>
           )}
-          <h2 style={{ marginTop: 8 }}>
-            {this.state.schoolName} - {this.state.studyTitle} (
-            {this.state.startDate.slice(0, 4)} -{" "}
-            {this.state.endDate.slice(0, 4)})
-          </h2>
-        </div>
-      );
-    }
+          {props.id == 0 && (
+            <button type="button" onClick={submitClick}>
+              Submit
+            </button>
+          )}
+        </form>
+      </div>
+    );
+  } else {
+    return (
+      <div className="cv-section">
+        <button
+          className="overlay-btn"
+          onClick={editClick}
+          style={{ alignSelf: "flex-end" }}
+        >
+          Edit
+        </button>
+        {props.id == 0 && (
+          <h1 style={{ fontSize: 36, paddingTop: 30 }}>Education</h1>
+        )}
+        <h2 style={{ marginTop: 8 }}>
+          {details.schoolName} - {details.studyTitle} (
+          {details.startDate.slice(0, 4)} - {details.endDate.slice(0, 4)})
+        </h2>
+      </div>
+    );
   }
-}
+};
 
 export { EducationItem };

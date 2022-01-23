@@ -1,109 +1,93 @@
-import { Component } from "react";
+import { useState } from "react";
 
-class Details extends Component {
-  constructor(props) {
-    super(props);
+const Details = () => {
+  const [details, setDetails] = useState({
+    editMode: true,
+    firstName: "John",
+    lastName: "Doe",
+    email: "jonnyD@gmail.com",
+    phoneNumber: "+44 7854689523",
+  });
 
-    this.state = {
-      editMode: true,
-      firstName: "John",
-      lastName: "Doe",
-      email: "jonnyD@gmail.com",
-      phoneNumber: "+44 7854689523",
-    };
-    this.submitClick = this.submitClick.bind(this);
-    this.editClick = this.editClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+  const submitClick = () => {
+    setDetails({ ...details, editMode: false });
+  };
 
-  submitClick() {
-    this.setState({
-      editMode: false,
-    });
-  }
+  const editClick = () => {
+    setDetails({ ...details, editMode: true });
+  };
 
-  editClick() {
-    this.setState({
-      editMode: true,
-    });
-  }
+  const handleChange = (event) => {
+    setDetails({ ...details, [event.target.name]: event.target.value });
+  };
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
-
-  render() {
-    if (this.state.editMode) {
-      return (
-        <div className="component-form">
-          <form className="input-form">
-            <h2 className="form-header">Personal Details</h2>
-            <div className="label-group">
-              <label>First Name</label>
-              <input
-                name="firstName"
-                placeholder="John"
-                value={this.state.firstName}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="label-group">
-              <label>Last Name</label>
-              <input
-                name="lastName"
-                placeholder="Doe"
-                value={this.state.lastName}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="label-group">
-              <label>Email</label>
-              <input
-                name="email"
-                placeholder="john@gmail.com"
-                value={this.state.email}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="label-group">
-              <label>Phone Number</label>
-              <input
-                name="phoneNumber"
-                placeholder="+44 7846589523"
-                value={this.state.phoneNumber}
-                onChange={this.handleChange}
-              />
-            </div>
-            <button type="button" onClick={this.submitClick}>
-              Submit
-            </button>
-          </form>
-        </div>
-      );
-    } else {
-      return (
-        <div className="cv-details-section">
-          <button
-            className="overlay-btn"
-            onClick={this.editClick}
-            style={{ alignSelf: "flex-start" }}
-          >
-            Edit
+  console.log(details);
+  if (details.editMode) {
+    return (
+      <div className="component-form">
+        <form className="input-form">
+          <h2 className="form-header">Personal Details</h2>
+          <div className="label-group">
+            <label>First Name</label>
+            <input
+              name="firstName"
+              placeholder="John"
+              value={details.firstName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="label-group">
+            <label>Last Name</label>
+            <input
+              name="lastName"
+              placeholder="Doe"
+              value={details.lastName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="label-group">
+            <label>Email</label>
+            <input
+              name="email"
+              placeholder="john@gmail.com"
+              value={details.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="label-group">
+            <label>Phone Number</label>
+            <input
+              name="phoneNumber"
+              placeholder="+44 7846589523"
+              value={details.phoneNumber}
+              onChange={handleChange}
+            />
+          </div>
+          <button type="button" onClick={submitClick}>
+            Submit
           </button>
+        </form>
+      </div>
+    );
+  } else {
+    return (
+      <div className="cv-details-section">
+        <button
+          className="overlay-btn"
+          onClick={editClick}
+          style={{ alignSelf: "flex-start" }}
+        >
+          Edit
+        </button>
 
-          <h2 style={{ fontSize: 48 }}>
-            {this.state.firstName + " " + this.state.lastName}
-          </h2>
-          <h2 style={{ fontSize: 16 }}>email: {this.state.email}</h2>
-          <h2 style={{ fontSize: 16 }}>
-            contact number: {this.state.phoneNumber}
-          </h2>
-        </div>
-      );
-    }
+        <h2 style={{ fontSize: 48 }}>
+          {details.firstName + " " + details.lastName}
+        </h2>
+        <h2 style={{ fontSize: 16 }}>email: {details.email}</h2>
+        <h2 style={{ fontSize: 16 }}>contact number: {details.phoneNumber}</h2>
+      </div>
+    );
   }
-}
+};
 
 export { Details };
